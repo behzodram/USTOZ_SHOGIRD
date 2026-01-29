@@ -87,4 +87,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    print("Script executed successfully. Dona")
+    print("Script executed successfully")
