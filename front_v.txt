@@ -1,3 +1,4 @@
+v 1.0.6 => front: Samarqan
 v 1.0.5 => front: 
 v 1.0.4 => front: done
 v 1.0.3 => front: Normalize line endings

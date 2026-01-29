@@ -87,4 +87,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    print("Script executed successfully. Samarqan")
+    print("Script executed successfully. Samarqand")
