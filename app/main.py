@@ -87,4 +87,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    print("Script executed successfully. manimcha bo'ldi.")
