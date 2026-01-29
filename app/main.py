@@ -87,4 +87,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    print("Script executed successfully. Samarqand da Paxta terdim.")
+    print("Script executed successfully. ")
