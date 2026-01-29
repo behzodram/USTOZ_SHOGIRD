@@ -1,1 +1,1 @@
-v ..1 => back: back_v.txt add, removed from front branch
+v 1.0.0 => back: back_v.txt add, removed from front branch
