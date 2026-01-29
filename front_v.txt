@@ -1,2 +1,3 @@
+v 1.0.2 => front: Samar front
 v 1.0.1 => front:  again tets front
 v 1.0.0 => front: new bash test for f
