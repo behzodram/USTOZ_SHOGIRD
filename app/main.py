@@ -87,4 +87,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    print("Script executed successfully. tahrir = modify")
+    print("Script executed successfully. manimcha bo'ldi.")

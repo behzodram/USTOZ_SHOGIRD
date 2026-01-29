@@ -1,1 +1,2 @@
+v 1.0.1 => back: manimcha bo'ldi.
 v 1.0.0 => back: back_v.txt add, removed from front branch
