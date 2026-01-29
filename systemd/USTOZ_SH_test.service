@@ -1,0 +1,13 @@
+[Unit]
+Description=USTOZ_SH_test Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/behzod/github/USTOZ_SH_test/app
+ExecStart=/home/ubuntu/behzod/github/USTOZ_SH_test/venv/bin/python main.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

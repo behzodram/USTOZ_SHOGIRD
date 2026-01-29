@@ -1,0 +1,31 @@
+Shogird kerak:
+
+🎓 Ustoz: Mirazam Mirxamidov
+🌐 Yosh: 34
+📚 Texnologiya: C#, . Net, Telegram Bot, Mongodb 
+🇺🇿 Telegram: @mirazam_mirkhamidov 
+📞 Aloqa: +998 90 322 88 18 
+🌐 Hudud: Toshkent sh
+💰 Narxi: 950 ming oyiga 
+👨🏻‍💻 Kasbi: Senior Software Engineer at Epam, Napster Debuggers Founder 
+🕰 Murojaat qilish vaqti: 10:00 - 20:00 
+🔎 Maqsad: 
+C#da telegram bot yaratish. 
+restful api backend. 
+baza - mongodb. 
+github actions va docker yordamida serverga joylash (ci-cd). 
+yuqori sifatli application yaratishni o'rganamiz: reliable, fault-tolerant, fast, flexible, easily extensible. 
+
+talablar:
+- o'z ustida mustaqil ishlash!
+- english b2+ (ko'p material o'qish kerak bo'ladi). 
+- matematika (pifagor teoremasini bilish). 
+- c#da 1+ yillik tajriba. 
+- baza bilan ishlash tajribasi. 
+- 50ta otjimanie qila olish. 
+
+joylar soni 4ta. kurs tugagach telegram bot startup uchun jamoa skakllanish ehtimoli bor. 
+
+#shogird #csharp #mongoDb #telegramBot #Toshkent
+
+👉 @UstozShogird kanaliga ulanish (https://t.me/joinchat/AAAAAD7sfMQWkI7IudW6eg)0

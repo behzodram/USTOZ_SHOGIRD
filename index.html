@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UstozShogird | Ish va O'qish Imkoniyatlari</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #10b981;
+            --danger-color: #ef4444;
+            --light-color: #f8fafc;
+            --dark-color: #1e293b;
+            --sidebar-bg: #ffffff;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --text-primary: #334155;
+            --text-secondary: #64748b;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dark-mode {
+            --primary-color: #60a5fa;
+            --primary-dark: #3b82f6;
+            --secondary-color: #34d399;
+            --danger-color: #f87171;
+            --light-color: #0f172a;
+            --dark-color: #f1f5f9;
+            --sidebar-bg: #1e293b;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--text-primary);
+            transition: var(--transition);
+            min-height: 100vh;
+        }
+
+        /* Fixed Header */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            height: 70px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .brand i {
+            font-size: 1.8rem;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .location-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .location-info:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: rotate(15deg);
+        }
+
+        /* Main Content Layout */
+        .main-layout {
+            display: flex;
+            margin-top: 70px;
+            min-height: calc(100vh - 70px);
+        }
+
+        /* Fixed Sidebar Filters */
+        .sidebar-filters {
+            width: 280px;
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 25px 20px;
+            position: fixed;
+            top: 70px;
+            bottom: 0;
+            left: 0;
+            overflow-y: auto;
+            z-index: 900;
+            transition: var(--transition);
+        }
+
+        .filter-section {
+            margin-bottom: 30px;
+        }
+
+        .filter-section h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-option:hover {
+            border-color: var(--primary-color);
+            transform: translateX(3px);
+        }
+
+        .filter-option.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .filter-option.active i {
+            color: white;
+        }
+
+        .filter-option i {
+            color: var(--text-secondary);
+            width: 20px;
+            font-size: 0.9rem;
+        }
+
+        .multi-select-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .multi-select-option {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .multi-select-option:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .multi-select-option.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .multi-select-option.active i {
+            color: white;
+        }
+
+        .multi-select-option i {
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+
+        .filter-actions {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .apply-filter {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .apply-filter:hover {
+            background: var(--primary-dark);
+        }
+
+        .clear-filter {
+            background: var(--danger-color);
+            color: white;
+        }
+
+        .clear-filter:hover {
+            background: #dc2626;
+        }
+
+        /* Content Area */
+        .content-area {
+            flex: 1;
+            margin-left: 280px;
+            padding: 30px;
+            transition: var(--transition);
+        }
+
+        /* Fixed Category Filters */
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 30px;
+            padding: 10px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 70px;
+            z-index: 800;
+        }
+
+        .category-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background: var(--card-bg);
+            border: none;
+            border-radius: var(--radius);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .category-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .category-btn.active {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .category-btn i {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .category-btn .btn-text {
+            position: absolute;
+            top: -25px;
+            background: var(--primary-dark);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .category-btn.active .btn-text {
+            opacity: 1;
+        }
+
+        /* Announcements Grid */
+        .announcements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .announcement-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .announcement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-type {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .type-xodim {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+        }
+
+        .type-ustoz {
+            background: linear-gradient(135deg, #10b981, #047857);
+            color: white;
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+        }
+
+        .type-shogird {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.3);
+        }
+
+        .type-ishjoyi {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3);
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .person-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .person-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+            flex-shrink: 0;
+            border: 3px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode .person-avatar {
+            border: 3px solid var(--border-color);
+        }
+
+        .person-details h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+
+        .person-details .role {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+        }
+
+        .detail-item i {
+            color: var(--primary-color);
+            width: 18px;
+            opacity: 0.8;
+        }
+
+        .tech-container {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: var(--radius-sm);
+        }
+
+        .tech-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+        }
+
+        .maqsad {
+            padding: 15px;
+            background: rgba(16, 185, 129, 0.05);
+            border-radius: var(--radius-sm);
+            border-left: 4px solid var(--secondary-color);
+            margin-top: 15px;
+        }
+
+        .maqsad p {
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .card-footer {
+            padding: 15px 20px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hashtags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .hashtag {
+            color: var(--primary-color);
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .contact-btn {
+            padding: 8px 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .contact-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* No results */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+
+        .no-results i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--border-color);
+        }
+
+        /* Mobile Filter Controls */
+        .mobile-filter-controls {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            gap: 15px;
+            z-index: 1002;
+        }
+
+        .mobile-filter-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .filter-open {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .clear-all {
+            background: var(--danger-color);
+            color: white;
+        }
+
+        /* Active Filters Badge */
+        .active-filters-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--danger-color);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .sidebar-filters {
+                width: 250px;
+            }
+            
+            .content-area {
+                margin-left: 250px;
+            }
+            
+            .announcements-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .sidebar-filters {
+                transform: translateX(-100%);
+                z-index: 1001;
+            }
+            
+            .sidebar-filters.active {
+                transform: translateX(0);
+            }
+            
+            .content-area {
+                margin-left: 0;
+                padding: 20px;
+            }
+            
+            .mobile-filter-controls {
+                display: flex;
+            }
+            
+            .category-filters {
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding: 15px;
+            }
+            
+            .category-btn {
+                flex-shrink: 0;
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header {
+                padding: 15px 20px;
+            }
+            
+            .brand {
+                font-size: 1.3rem;
+            }
+            
+            .location-info span {
+                display: none;
+            }
+            
+            .announcements-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation for avatar */
+        @keyframes avatarPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .person-avatar:hover {
+            animation: avatarPulse 0.5s ease;
+        }
+
+        /* Selected Filters Display */
+        .selected-filters {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            display: none;
+        }
+
+        .selected-filter-tag {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .remove-filter {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="fixed-header">
+        <div class="brand">
+            <i class="fas fa-handshake"></i>
+            <span>UstozShogird</span>
+        </div>
+        
+        <div class="header-controls">
+            <div class="location-info" id="locationInfo">
+                <i class="fas fa-map-marker-alt"></i>
+                <span id="currentLocation">Toshkent sh</span>
+            </div>
+            
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+        <!-- Sidebar Filters -->
+        <aside class="sidebar-filters" id="sidebarFilters">
+            <!-- Category filter -->
+            <div class="filter-section">
+                <h3><i class="fas fa-filter"></i> Kategoriya</h3>
+                <div class="filter-options">
+                    <div class="filter-option active" data-filter="category" data-value="all">
+                        <i class="fas fa-th-large"></i>
+                        <span>Barchasi</span>
+                    </div>
+                    <div class="filter-option" data-filter="category" data-value="xodim">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Xodim</span>
+                    </div>
+                    <div class="filter-option" data-filter="category" data-value="ustoz">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Ustoz</span>
+                    </div>
+                    <div class="filter-option" data-filter="category" data-value="shogird">
+                        <i class="fas fa-user-graduate"></i>
+                        <span>Shogird</span>
+                    </div>
+                    <div class="filter-option" data-filter="category" data-value="ishjoyi">
+                        <i class="fas fa-building"></i>
+                        <span>Ish joyi</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Viloyat filter -->
+            <div class="filter-section">
+                <h3><i class="fas fa-map"></i> Hudud</h3>
+                <div class="filter-options">
+                    <div class="filter-option active" data-filter="region" data-value="all">
+                        <i class="fas fa-globe"></i>
+                        <span>Barcha hududlar</span>
+                    </div>
+                    <div class="filter-option" data-filter="region" data-value="toshkent">
+                        <i class="fas fa-city"></i>
+                        <span>Toshkent sh</span>
+                    </div>
+                    <div class="filter-option" data-filter="region" data-value="qashqadaryo">
+                        <i class="fas fa-mountain"></i>
+                        <span>Qashqadaryo</span>
+                    </div>
+                    <div class="filter-option" data-filter="region" data-value="buxoro">
+                        <i class="fas fa-archway"></i>
+                        <span>Buxoro</span>
+                    </div>
+                    <div class="filter-option" data-filter="region" data-value="samarqand">
+                        <i class="fas fa-landmark"></i>
+                        <span>Samarqand</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Yosh filter -->
+            <div class="filter-section">
+                <h3><i class="fas fa-user"></i> Yosh</h3>
+                <div class="filter-options">
+                    <div class="filter-option active" data-filter="age" data-value="all">
+                        <i class="fas fa-infinity"></i>
+                        <span>Barcha yosh</span>
+                    </div>
+                    <div class="filter-option" data-filter="age" data-value="18-25">
+                        <i class="fas fa-user-graduate"></i>
+                        <span>18-25 yosh</span>
+                    </div>
+                    <div class="filter-option" data-filter="age" data-value="26-35">
+                        <i class="fas fa-user-tie"></i>
+                        <span>26-35 yosh</span>
+                    </div>
+                    <div class="filter-option" data-filter="age" data-value="35+">
+                        <i class="fas fa-user-friends"></i>
+                        <span>35+ yosh</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Texnologiya filter (Multi-select) -->
+            <div class="filter-section">
+                <h3><i class="fas fa-code"></i> Texnologiya</h3>
+                <div class="multi-select-options" id="techFilter">
+                    <div class="multi-select-option active" data-filter="tech" data-value="all">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Barchasi</span>
+                    </div>
+                    <div class="multi-select-option" data-filter="tech" data-value="nodejs">
+                        <i class="fas fa-circle"></i>
+                        <span>Node.js</span>
+                    </div>
+                    <div class="multi-select-option" data-filter="tech" data-value="python">
+                        <i class="fas fa-circle"></i>
+                        <span>Python</span>
+                    </div>
+                    <div class="multi-select-option" data-filter="tech" data-value="csharp">
+                        <i class="fas fa-circle"></i>
+                        <span>C#</span>
+                    </div>
+                    <div class="multi-select-option" data-filter="tech" data-value="react">
+                        <i class="fas fa-circle"></i>
+                        <span>React</span>
+                    </div>
+                    <div class="multi-select-option" data-filter="tech" data-value="java">
+                        <i class="fas fa-circle"></i>
+                        <span>Java</span>
+                    </div>
+                    <div class="multi-select-option" data-filter="tech" data-value="php">
+                        <i class="fas fa-circle"></i>
+                        <span>PHP</span>
+                    </div>
+                    <div class="multi-select-option" data-filter="tech" data-value="sql">
+                        <i class="fas fa-circle"></i>
+                        <span>SQL</span>
+                    </div>
+                    <div class="multi-select-option" data-filter="tech" data-value="docker">
+                        <i class="fas fa-circle"></i>
+                        <span>Docker</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Narx filter (Multi-select) -->
+            <div class="filter-section">
+                <h3><i class="fas fa-money-bill-wave"></i> Narx</h3>
+                <div class="multi-select-options" id="priceFilter">
+                    <div class="multi-select-option active" data-filter="price" data-value="all">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Barchasi</span>
+                    </div>
+                    <div class="multi-select-option" data-filter="price" data-value="tekin">
+                        <i class="fas fa-circle"></i>
+                        <span>Tekin</span>
+                    </div>
+                    <div class="multi-select-option" data-filter="price" data-value="0-500">
+                        <i class="fas fa-circle"></i>
+                        <span>$0 - $500</span>
+                    </div>
+                    <div class="multi-select-option" data-filter="price" data-value="500-1000">
+                        <i class="fas fa-circle"></i>
+                        <span>$500 - $1000</span>
+                    </div>
+                    <div class="multi-select-option" data-filter="price" data-value="1000+">
+                        <i class="fas fa-circle"></i>
+                        <span>$1000+</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hashtag filter (Multi-select) -->
+            <div class="filter-section">
+                <h3><i class="fas fa-hashtag"></i> Hashtag</h3>
+                <div class="multi-select-options" id="hashtagFilter">
+                    <div class="multi-select-option active" data-filter="hashtag" data-value="all">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Barchasi</span>
+                    </div>
+                    <div class="multi-select-option" data-filter="hashtag" data-value="backend">
+                        <i class="fas fa-circle"></i>
+                        <span>#backend</span>
+                    </div>
+                    <div class="multi-select-option" data-filter="hashtag" data-value="frontend">
+                        <i class="fas fa-circle"></i>
+                        <span>#frontend</span>
+                    </div>
+                    <div class="multi-select-option" data-filter="hashtag" data-value="fullstack">
+                        <i class="fas fa-circle"></i>
+                        <span>#fullstack</span>
+                    </div>
+                    <div class="multi-select-option" data-filter="hashtag" data-value="mobile">
+                        <i class="fas fa-circle"></i>
+                        <span>#mobile</span>
+                    </div>
+                    <div class="multi-select-option" data-filter="hashtag" data-value="devops">
+                        <i class="fas fa-circle"></i>
+                        <span>#devops</span>
+                    </div>
+                    <div class="multi-select-option" data-filter="hashtag" data-value="ai">
+                        <i class="fas fa-circle"></i>
+                        <span>#ai</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filter Actions -->
+            <div class="filter-actions">
+                <button class="filter-btn apply-filter" id="applyFilters">
+                    <i class="fas fa-check"></i> Filtrlash
+                </button>
+                <button class="filter-btn clear-filter" id="clearFilters">
+                    <i class="fas fa-times"></i> Tozalash
+                </button>
+            </div>
+        </aside>
+
+        <!-- Mobile Filter Controls -->
+        <div class="mobile-filter-controls">
+            <button class="mobile-filter-btn filter-open" id="mobileFilterOpen">
+                <i class="fas fa-filter"></i>
+                <span class="active-filters-badge" id="activeFiltersBadge">0</span>
+            </button>
+            <button class="mobile-filter-btn clear-all" id="mobileClearAll">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <!-- Selected Filters Display -->
+            <div class="selected-filters" id="selectedFilters">
+                <!-- Selected filters will be displayed here -->
+            </div>
+
+            <!-- Fixed Category Filters -->
+            <div class="category-filters">
+                <button class="category-btn active" data-category="all">
+                    <i class="fas fa-th-large"></i>
+                    <span class="btn-text">Barchasi</span>
+                </button>
+                <button class="category-btn" data-category="xodim">
+                    <i class="fas fa-briefcase"></i>
+                    <span class="btn-text">Xodim</span>
+                </button>
+                <button class="category-btn" data-category="ustoz">
+                    <i class="fas fa-user-tie"></i>
+                    <span class="btn-text">Ustoz</span>
+                </button>
+                <button class="category-btn" data-category="shogird">
+                    <i class="fas fa-user-graduate"></i>
+                    <span class="btn-text">Shogird</span>
+                </button>
+                <button class="category-btn" data-category="ishjoyi">
+                    <i class="fas fa-building"></i>
+                    <span class="btn-text">Ish joyi</span>
+                </button>
+            </div>
+
+            <!-- Announcements Grid -->
+            <div class="announcements-grid" id="announcementsContainer">
+                <!-- Cards will be dynamically inserted here -->
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>Hech qanday e'lon topilmadi</h3>
+                <p>Filter parametrlarini o'zgartirib ko'ring</p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.className = 'fas fa-sun';
+        }
+        
+        // Mobile filter controls
+        const mobileFilterOpen = document.getElementById('mobileFilterOpen');
+        const mobileClearAll = document.getElementById('mobileClearAll');
+        const sidebarFilters = document.getElementById('sidebarFilters');
+        const activeFiltersBadge = document.getElementById('activeFiltersBadge');
+        
+        mobileFilterOpen.addEventListener('click', () => {
+            sidebarFilters.classList.add('active');
+        });
+        
+        mobileClearAll.addEventListener('click', () => {
+            clearAllFilters();
+            renderAnnouncements();
+            updateSelectedFiltersDisplay();
+            updateActiveFiltersCount();
+        });
+        
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 992) {
+                if (!sidebarFilters.contains(e.target) && 
+                    !mobileFilterOpen.contains(e.target) && 
+                    !mobileClearAll.contains(e.target)) {
+                    sidebarFilters.classList.remove('active');
+                }
+            }
+        });
+        
+        // Sample data - will be replaced by data from input.json
+        let announcements = [];
+
+        // Function to load announcements from input.json
+        async function loadAnnouncementsFromJson() {
+            try {
+                const response = await fetch('input.json');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP xatolik! Status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                announcements = data;
+                
+                console.log('E\'lonlar muvaffaqiyatli yuklandi:', announcements.length, 'ta e\'lon');
+                
+                // Render announcements after loading
+                renderAnnouncements();
+                updateSelectedFiltersDisplay();
+                updateActiveFiltersCount();
+                
+            } catch (error) {
+                console.error('E\'lonlarni yuklashda xatolik:', error);
+            }
+        }
+
+        loadAnnouncementsFromJson()
+        
+        // Get initials - fixed for oval issue
+        function getInitials(name) {
+            if (!name) return "?";
+            // Split by space and get first letters of first two words
+            const words = name.trim().split(' ');
+            if (words.length === 1) return words[0].charAt(0).toUpperCase();
+            
+            return (words[0].charAt(0) + words[words.length - 1].charAt(0)).toUpperCase();
+        }
+        
+        // Filter state
+        let currentFilters = {
+            category: 'all',
+            region: 'all',
+            age: 'all',
+            tech: ['all'],
+            price: ['all'],
+            hashtag: ['all']
+        };
+        
+        // Initialize filter options
+        function initFilters() {
+            // Single select filters
+            document.querySelectorAll('.filter-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    const filterType = option.dataset.filter;
+                    const filterValue = option.dataset.value;
+                    
+                    // Remove active class from all options in this filter group
+                    document.querySelectorAll(`.filter-option[data-filter="${filterType}"]`).forEach(opt => {
+                        opt.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked option
+                    option.classList.add('active');
+                    
+                    // Update filter state
+                    if (filterType === 'category') {
+                        // Update category buttons as well
+                        document.querySelectorAll('.category-btn').forEach(btn => {
+                            btn.classList.remove('active');
+                            if (btn.dataset.category === filterValue) {
+                                btn.classList.add('active');
+                            }
+                        });
+                    }
+                    
+                    currentFilters[filterType] = filterValue;
+                });
+            });
+            
+            // Multi-select filters
+            document.querySelectorAll('.multi-select-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    const filterType = option.dataset.filter;
+                    const filterValue = option.dataset.value;
+                    
+                    if (filterValue === 'all') {
+                        // If clicking "all", clear other selections
+                        document.querySelectorAll(`.multi-select-option[data-filter="${filterType}"]`).forEach(opt => {
+                            opt.classList.remove('active');
+                            opt.querySelector('i').className = 'fas fa-circle';
+                        });
+                        
+                        option.classList.add('active');
+                        option.querySelector('i').className = 'fas fa-check-circle';
+                        
+                        currentFilters[filterType] = ['all'];
+                    } else {
+                        // Remove "all" if it's selected
+                        const allOption = document.querySelector(`.multi-select-option[data-filter="${filterType}"][data-value="all"]`);
+                        if (allOption.classList.contains('active')) {
+                            allOption.classList.remove('active');
+                            allOption.querySelector('i').className = 'fas fa-circle';
+                            currentFilters[filterType] = [];
+                        }
+                        
+                        // Toggle current option
+                        option.classList.toggle('active');
+                        
+                        if (option.classList.contains('active')) {
+                            option.querySelector('i').className = 'fas fa-check-circle';
+                            if (!currentFilters[filterType].includes(filterValue)) {
+                                currentFilters[filterType].push(filterValue);
+                            }
+                        } else {
+                            option.querySelector('i').className = 'fas fa-circle';
+                            currentFilters[filterType] = currentFilters[filterType].filter(v => v !== filterValue);
+                            
+                            // If no options selected, select "all"
+                            if (currentFilters[filterType].length === 0) {
+                                allOption.classList.add('active');
+                                allOption.querySelector('i').className = 'fas fa-check-circle';
+                                currentFilters[filterType] = ['all'];
+                            }
+                        }
+                    }
+                });
+            });
+            
+            // Category buttons
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    // Update filter state
+                    const categoryValue = btn.dataset.category;
+                    currentFilters.category = categoryValue;
+                    
+                    // Update sidebar filter
+                    document.querySelectorAll(`.filter-option[data-filter="category"]`).forEach(opt => {
+                        opt.classList.remove('active');
+                        if (opt.dataset.value === categoryValue) {
+                            opt.classList.add('active');
+                        }
+                    });
+                    
+                    renderAnnouncements();
+                    updateSelectedFiltersDisplay();
+                    updateActiveFiltersCount();
+                });
+            });
+            
+            // Apply filters button
+            document.getElementById('applyFilters').addEventListener('click', () => {
+                if (window.innerWidth <= 992) {
+                    sidebarFilters.classList.remove('active');
+                }
+                renderAnnouncements();
+                updateSelectedFiltersDisplay();
+                updateActiveFiltersCount();
+            });
+            
+            // Clear filters button
+            document.getElementById('clearFilters').addEventListener('click', () => {
+                clearAllFilters();
+                renderAnnouncements();
+                updateSelectedFiltersDisplay();
+                updateActiveFiltersCount();
+            });
+        }
+        
+        // Clear all filters
+        function clearAllFilters() {
+            // Reset filter state
+            currentFilters = {
+                category: 'all',
+                region: 'all',
+                age: 'all',
+                tech: ['all'],
+                price: ['all'],
+                hashtag: ['all']
+            };
+            
+            // Reset UI
+            document.querySelectorAll('.filter-option').forEach(option => {
+                option.classList.remove('active');
+                if (option.dataset.value === 'all') {
+                    option.classList.add('active');
+                }
+            });
+            
+            document.querySelectorAll('.multi-select-option').forEach(option => {
+                option.classList.remove('active');
+                option.querySelector('i').className = 'fas fa-circle';
+                if (option.dataset.value === 'all') {
+                    option.classList.add('active');
+                    option.querySelector('i').className = 'fas fa-check-circle';
+                }
+            });
+            
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.category === 'all') {
+                    btn.classList.add('active');
+                }
+            });
+        }
+        
+        // Filter announcements based on current filters
+        function filterAnnouncements() {
+            return announcements.filter(ann => {
+                // Category filter
+                if (currentFilters.category !== 'all' && ann.type !== currentFilters.category) {
+                    return false;
+                }
+                
+                // Region filter
+                if (currentFilters.region !== 'all') {
+                    if (currentFilters.region === 'toshkent' && !ann.hudud.toLowerCase().includes('toshkent')) {
+                        return false;
+                    }
+                    if (currentFilters.region === 'qashqadaryo' && !ann.hudud.toLowerCase().includes('qashqadaryo')) {
+                        return false;
+                    }
+                    if (currentFilters.region === 'buxoro' && !ann.hudud.toLowerCase().includes('buxoro')) {
+                        return false;
+                    }
+                    if (currentFilters.region === 'samarqand' && !ann.hudud.toLowerCase().includes('samarqand')) {
+                        return false;
+                    }
+                }
+                
+                // Age filter
+                if (currentFilters.age !== 'all' && ann.yosh) {
+                    const age = ann.yosh;
+                    if (currentFilters.age === '18-25' && (age < 18 || age > 25)) return false;
+                    if (currentFilters.age === '26-35' && (age < 26 || age > 35)) return false;
+                    if (currentFilters.age === '35+' && age < 35) return false;
+                }
+                
+                // Tech filter (multi-select)
+                if (!currentFilters.tech.includes('all') && ann.texnologiya) {
+                    const techs = ann.texnologiya.map(t => t.toLowerCase());
+                    const hasTech = currentFilters.tech.some(filterTech => 
+                        techs.some(t => t.includes(filterTech))
+                    );
+                    if (!hasTech) return false;
+                }
+                
+                // Price filter (multi-select)
+                if (!currentFilters.price.includes('all')) {
+                    const price = ann.narxi || ann.maosh || '';
+                    const priceLower = price.toLowerCase();
+                    
+                    let matchesPrice = false;
+                    
+                    currentFilters.price.forEach(priceFilter => {
+                        if (priceFilter === 'tekin' && (priceLower.includes('tekin') || priceLower.includes('amaliyot'))) {
+                            matchesPrice = true;
+                        } else if (priceFilter === '0-500' && price.includes('$')) {
+                            const priceNum = parseInt(price.replace(/[^0-9]/g, ''));
+                            if (priceNum >= 0 && priceNum <= 500) matchesPrice = true;
+                        } else if (priceFilter === '500-1000' && price.includes('$')) {
+                            const priceNum = parseInt(price.replace(/[^0-9]/g, ''));
+                            if (priceNum >= 500 && priceNum <= 1000) matchesPrice = true;
+                        } else if (priceFilter === '1000+' && price.includes('$')) {
+                            const priceNum = parseInt(price.replace(/[^0-9]/g, ''));
+                            if (priceNum >= 1000) matchesPrice = true;
+                        }
+                    });
+                    
+                    if (!matchesPrice) return false;
+                }
+                
+                // Hashtag filter (multi-select)
+                if (!currentFilters.hashtag.includes('all') && ann.hashtags) {
+                    const hasHashtag = currentFilters.hashtag.some(filterHashtag => 
+                        ann.hashtags.some(tag => tag.toLowerCase().includes(filterHashtag))
+                    );
+                    if (!hasHashtag) return false;
+                }
+                
+                return true;
+            });
+        }
+        
+        // Update selected filters display
+        function updateSelectedFiltersDisplay() {
+            const selectedFiltersContainer = document.getElementById('selectedFilters');
+            selectedFiltersContainer.innerHTML = '';
+            
+            let hasActiveFilters = false;
+            
+            // Check each filter type
+            Object.keys(currentFilters).forEach(filterType => {
+                const filterValue = currentFilters[filterType];
+                
+                if (Array.isArray(filterValue)) {
+                    if (filterValue.length > 0 && !(filterValue.length === 1 && filterValue[0] === 'all')) {
+                        hasActiveFilters = true;
+                        filterValue.forEach(value => {
+                            if (value !== 'all') {
+                                const filterTag = document.createElement('div');
+                                filterTag.className = 'selected-filter-tag';
+                                filterTag.innerHTML = `
+                                    <span>${getFilterDisplayName(filterType, value)}</span>
+                                    <button class="remove-filter" data-filter="${filterType}" data-value="${value}">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                `;
+                                selectedFiltersContainer.appendChild(filterTag);
+                            }
+                        });
+                    }
+                } else if (filterValue !== 'all') {
+                    hasActiveFilters = true;
+                    const filterTag = document.createElement('div');
+                    filterTag.className = 'selected-filter-tag';
+                    filterTag.innerHTML = `
+                        <span>${getFilterDisplayName(filterType, filterValue)}</span>
+                        <button class="remove-filter" data-filter="${filterType}" data-value="${filterValue}">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    selectedFiltersContainer.appendChild(filterTag);
+                }
+            });
+            
+            // Show/hide selected filters container
+            selectedFiltersContainer.style.display = hasActiveFilters ? 'flex' : 'none';
+            
+            // Add event listeners to remove buttons
+            document.querySelectorAll('.remove-filter').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const filterType = e.currentTarget.dataset.filter;
+                    const filterValue = e.currentTarget.dataset.value;
+                    
+                    removeFilter(filterType, filterValue);
+                    renderAnnouncements();
+                    updateSelectedFiltersDisplay();
+                    updateActiveFiltersCount();
+                });
+            });
+        }
+        
+        // Get display name for filter
+        function getFilterDisplayName(filterType, value) {
+            const displayNames = {
+                'category': {
+                    'xodim': 'Xodim',
+                    'ustoz': 'Ustoz',
+                    'shogird': 'Shogird',
+                    'ishjoyi': 'Ish joyi'
+                },
+                'region': {
+                    'toshkent': 'Toshkent',
+                    'qashqadaryo': 'Qashqadaryo',
+                    'buxoro': 'Buxoro',
+                    'samarqand': 'Samarqand'
+                },
+                'age': {
+                    '18-25': '18-25 yosh',
+                    '26-35': '26-35 yosh',
+                    '35+': '35+ yosh'
+                },
+                'tech': {
+                    'nodejs': 'Node.js',
+                    'python': 'Python',
+                    'csharp': 'C#',
+                    'react': 'React',
+                    'java': 'Java',
+                    'php': 'PHP',
+                    'sql': 'SQL',
+                    'docker': 'Docker'
+                },
+                'price': {
+                    'tekin': 'Tekin',
+                    '0-500': '$0-$500',
+                    '500-1000': '$500-$1000',
+                    '1000+': '$1000+'
+                },
+                'hashtag': {
+                    'backend': '#backend',
+                    'frontend': '#frontend',
+                    'fullstack': '#fullstack',
+                    'mobile': '#mobile',
+                    'devops': '#devops',
+                    'ai': '#ai'
+                }
+            };
+            
+            return displayNames[filterType]?.[value] || value;
+        }
+        
+        // Remove specific filter
+        function removeFilter(filterType, value) {
+            if (Array.isArray(currentFilters[filterType])) {
+                currentFilters[filterType] = currentFilters[filterType].filter(v => v !== value);
+                
+                // If no options left, add "all"
+                if (currentFilters[filterType].length === 0) {
+                    currentFilters[filterType] = ['all'];
+                }
+                
+                // Update UI
+                document.querySelectorAll(`.multi-select-option[data-filter="${filterType}"]`).forEach(option => {
+                    if (option.dataset.value === value) {
+                        option.classList.remove('active');
+                        option.querySelector('i').className = 'fas fa-circle';
+                    }
+                    if (option.dataset.value === 'all' && currentFilters[filterType].includes('all')) {
+                        option.classList.add('active');
+                        option.querySelector('i').className = 'fas fa-check-circle';
+                    }
+                });
+            } else {
+                currentFilters[filterType] = 'all';
+                
+                // Update UI
+                document.querySelectorAll(`.filter-option[data-filter="${filterType}"]`).forEach(option => {
+                    option.classList.remove('active');
+                    if (option.dataset.value === 'all') {
+                        option.classList.add('active');
+                    }
+                });
+            }
+        }
+        
+        // Update active filters count badge
+        function updateActiveFiltersCount() {
+            let count = 0;
+            
+            Object.keys(currentFilters).forEach(filterType => {
+                const filterValue = currentFilters[filterType];
+                
+                if (Array.isArray(filterValue)) {
+                    if (filterValue.length > 0 && !(filterValue.length === 1 && filterValue[0] === 'all')) {
+                        count += filterValue.length;
+                    }
+                } else if (filterValue !== 'all') {
+                    count++;
+                }
+            });
+            
+            activeFiltersBadge.textContent = count;
+            activeFiltersBadge.style.display = count > 0 ? 'flex' : 'none';
+        }
+        
+        // Render announcements
+        function renderAnnouncements() {
+            const container = document.getElementById('announcementsContainer');
+            const noResults = document.getElementById('noResults');
+            
+            container.innerHTML = '';
+            
+            const filtered = filterAnnouncements();
+            
+            if (filtered.length === 0) {
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            noResults.style.display = 'none';
+            
+            filtered.forEach(ann => {
+                const card = document.createElement('div');
+                card.className = 'announcement-card';
+                
+                // Determine card details based on type
+                let typeClass = '', title = '', role = '', personName = '';
+                
+                switch(ann.type) {
+                    case 'ustoz':
+                        typeClass = 'type-ustoz';
+                        title = ann.ustoz;
+                        personName = ann.ustoz;
+                        role = 'Ustoz';
+                        break;
+                    case 'shogird':
+                        typeClass = 'type-shogird';
+                        title = ann.shogird;
+                        personName = ann.shogird;
+                        role = 'Shogird';
+                        break;
+                    case 'xodim':
+                        typeClass = 'type-xodim';
+                        title = ann.xodim;
+                        personName = ann.xodim;
+                        role = ann.kasbi || 'Xodim';
+                        break;
+                    case 'ishjoyi':
+                        typeClass = 'type-ishjoyi';
+                        title = ann.idora;
+                        personName = ann.idora;
+                        role = 'Ish joyi';
+                        break;
+                }
+                
+                // Build card
+                card.innerHTML = `
+                    <div class="card-header">
+                        <span class="card-type ${typeClass}">${ann.type.toUpperCase()}</span>
+                        <i class="fas fa-${ann.type === 'ustoz' ? 'user-tie' : ann.type === 'shogird' ? 'user-graduate' : ann.type === 'xodim' ? 'briefcase' : 'building'}"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="person-info">
+                            <div class="person-avatar">${getInitials(personName)}</div>
+                            <div class="person-details">
+                                <h3>${title}</h3>
+                                <div class="role">${role}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="details-grid">
+                            ${ann.yosh ? `<div class="detail-item"><i class="fas fa-birthday-cake"></i><span>Yosh: ${ann.yosh}</span></div>` : ''}
+                            ${ann.hudud ? `<div class="detail-item"><i class="fas fa-map-marker-alt"></i><span>${ann.hudud}</span></div>` : ''}
+                            ${ann.narxi ? `<div class="detail-item"><i class="fas fa-money-bill-wave"></i><span>Narxi: ${ann.narxi}</span></div>` : ''}
+                            ${ann.maosh ? `<div class="detail-item"><i class="fas fa-money-bill-wave"></i><span>Maosh: ${ann.maosh}</span></div>` : ''}
+                            ${ann.murojaat_vaqti ? `<div class="detail-item"><i class="fas fa-clock"></i><span>${ann.murojaat_vaqti}</span></div>` : ''}
+                            ${ann.masul ? `<div class="detail-item"><i class="fas fa-user-check"></i><span>Mas'ul: ${ann.masul}</span></div>` : ''}
+                        </div>
+                        
+                        ${ann.texnologiya && ann.texnologiya.length > 0 ? `
+                            <div class="tech-container">
+                                <div class="tech-title">
+                                    <i class="fas fa-code"></i>
+                                    <span>Texnologiyalar:</span>
+                                </div>
+                                <div class="tech-tags">
+                                    ${ann.texnologiya.slice(0, 8).map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                                    ${ann.texnologiya.length > 8 ? `<span class="tech-tag">+${ann.texnologiya.length - 8}</span>` : ''}
+                                </div>
+                            </div>
+                        ` : ''}
+                        
+                        ${ann.maqsad ? `
+                            <div class="maqsad">
+                                <p>${ann.maqsad}</p>
+                            </div>
+                        ` : ''}
+                    </div>
+                    <div class="card-footer">
+                        <div class="hashtags">
+                            ${ann.hashtags.slice(0, 4).map(tag => `<span class="hashtag">#${tag}</span>`).join('')}
+                        </div>
+                        <button class="contact-btn" data-contact="${ann.telegram || ann.aloqa || ''}">
+                            <i class="fab fa-telegram"></i>
+                            Bog'lanish
+                        </button>
+                    </div>
+                `;
+                
+                // Add contact button event
+                const contactBtn = card.querySelector('.contact-btn');
+                contactBtn.addEventListener('click', () => {
+                    const contact = contactBtn.dataset.contact;
+                    if (contact) {
+                        alert(`Bog'lanish uchun: ${contact}`);
+                    } else {
+                        alert('Kontakt ma\'lumotlari mavjud emas');
+                    }
+                });
+                
+                container.appendChild(card);
+            });
+        }
+        
+        // Initialize location
+        function initLocation() {
+            const locationInfo = document.getElementById('locationInfo');
+            const currentLocation = document.getElementById('currentLocation');
+            
+            if (navigator.geolocation) {
+                locationInfo.addEventListener('click', () => {
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            // Simulate location-based filtering
+                            currentLocation.textContent = "Joylashuv bo'yicha";
+                            currentFilters.region = 'toshkent';
+                            
+                            // Update UI
+                            document.querySelectorAll('.filter-option[data-filter="region"]').forEach(opt => {
+                                opt.classList.remove('active');
+                                if (opt.dataset.value === 'toshkent') {
+                                    opt.classList.add('active');
+                                }
+                            });
+                            
+                            renderAnnouncements();
+                            updateSelectedFiltersDisplay();
+                            updateActiveFiltersCount();
+                            
+                            alert("Joylashuv aniqlandi! Toshkent bo'yicha filter qo'llandi.");
+                        },
+                        (error) => {
+                            alert("Joylashuvni aniqlashda xatolik. Qo'lda tanlang.");
+                        }
+                    );
+                });
+            }
+        }
+        
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            initFilters();
+            initLocation();
+            renderAnnouncements();
+            updateSelectedFiltersDisplay();
+            updateActiveFiltersCount();
+        });
+    </script>
+</body>
+</html>
