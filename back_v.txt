@@ -1,3 +1,4 @@
+v 1.0.4 => back: DELETED
 v 1.0.3 => back: DELETED
 v 1.0.2 => back: DELETED
 v 1.0.1 => back: manimcha bo'ldi.
