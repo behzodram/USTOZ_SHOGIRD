@@ -1,3 +1,5 @@
+v 1.2.7 => front: 
+v 1.2.6 => front: 
 v 1.2.5 => front: 
 v 1.2.4 => front: 
 v 1.2.3 => front: 
